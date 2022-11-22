@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import ReactDOM from 'react-dom'
 import Signup from "./Signup";
 
 // IM FROM MY MACBOOK!
@@ -8,7 +7,9 @@ import Signup from "./Signup";
 export default function Login(props) {
   const [seePassword, setSeePassword] = useState(true);
   const [mayText, setMaytext] = useState("");
-  // const [openModal, setOpenmodal] = useState(false)
+  const [openModal, setOpenModal] = useState(true);
+  
+  console.log(openModal)
 
   const seePasswordFunc = () => {
     return setSeePassword(!seePassword);
@@ -142,8 +143,8 @@ export default function Login(props) {
         </div>
 
         {/* SIGN UP BUTTON */}
-        <div className="mt-7">
-          <Signup />
+        <div className={`mt-7`} onClick={() => setOpenModal(true)}>
+          <Signup openModal={openModal}/>
         </div>
         {/* <div
           onClick={showSignupModal}
