@@ -3,7 +3,8 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import ReactDOM from 'react-dom'
 import Signup from "./Signup";
 
-// IM FROM MY PC
+// IM FROM MY MACBOOK!
+
 export default function Login(props) {
   const [seePassword, setSeePassword] = useState(true);
   const [mayText, setMaytext] = useState("");
