@@ -2,22 +2,60 @@ import React, { useState } from "react";
 
 const Signup = (props) => {
   const [containPassword, setContainPassword] = useState(false);
-  
-  const containPasswordFunc = (event) => {
-    setContainPassword(event.target.value)
-    if(event.target.value.length >= 8){
-      setContainPassword(true)
-    } else {
-      setContainPassword(false)
-    }
-  }
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState(0);
+  // const [gender, setGender] = useState('');
+
   
   const passwordChar = [
-    
-  ]
-  
+    {
+      chars: /[0-9]/,
+      message: "must contain at least one number",
+    },
+    {
+      chars: /[a-z]/,
+      message: "must contain one numerical digit",
+    },
+    {
+      chars: /[A-Z]/,
+      message: "must contain one numerical digit",
+    },
+    {
+      chars: /[!@#$%^&*()_+=-?><:"';]/,
+      message: "must contain one special character",
+    },
+  ];
+
+  const containPasswordFunc = (event) => {
+    setContainPassword(event.target.value);
+
+    if (event.target.value.length >= 8) {
+      setContainPassword(true);
+    } else {
+      setContainPassword(false);
+    }
+  };
+
+  const validateForSubmitButton = (event) => {
+    const input = event.target.value;
+    for (let x of passwordChar) {
+      console.log(input.match(x.chars));
+    }
+  };
+
   return (
     <>
+      {/* <div className="col-span-2 w-[] ">
+        <input
+          onChange={validateForSubmitButton}
+          className="p-3 text-[1.1rem] rounded-md ring-1 ring-gray-300 w-[100%] inset-shadow"
+          type="password"
+          //ADD EVENT HANDLER LATER -- TYPE for string and password
+          placeholder="New Password"
+        />
+      </div> */}
       <style>{`
     .box-shadow {
       -webkit-box-shadow: 1px 3px 14px 5px rgba(0, 0, 0, 0.22);
@@ -35,7 +73,6 @@ const Signup = (props) => {
           className="z-10 bg-green transition-all hover:cursor-pointer hover:bg-hovergreen rounded-md py-3 w-[12rem]
         m-[0_auto]
         "
-          to="/signup"
         >
           <button className="font-bold text-white">Create new account</button>
         </div>
@@ -58,16 +95,21 @@ const Signup = (props) => {
               <div className="col-start-1 col-span-2 my-2 opacity-10">
                 <hr />
               </div>
-
+              
+              {/* FIRST NAME */}
               <div className="col-start-1">
                 <input
+                  onChange={(e) => setFirstName(e.target.value)}
                   className="p-3 text-[1.1rem] rounded-md ring-1 ring-gray-300 w-[100%] inset-shadow"
                   type="text"
                   placeholder="First Name"
                 />
               </div>
+              
+              {/* LAST NAME */}
               <div>
                 <input
+                  onChange={(e) => setLastName(e.target.value)}
                   className="p-3 text-[1.1rem] rounded-md ring-1 ring-gray-300 w-[100%] inset-shadow"
                   type="text"
                   placeholder="Last Name"
@@ -76,6 +118,7 @@ const Signup = (props) => {
               {/* -----------------MOBILE AND EMAIL------------- */}
               <div className="col-span-2 w-[] ">
                 <input
+                  onChange={(e) => setEmail(e.target.value)}
                   className="p-3 text-[1.1rem] rounded-md ring-1 ring-gray-300 w-[100%] inset-shadow"
                   type="email"
                   placeholder="Mobile number or Email"
@@ -91,10 +134,13 @@ const Signup = (props) => {
                   placeholder="New Password"
                 />
               </div>
-              
-              <div className={containPassword ? 'col-span-3' : 'hidden' }>
-                <input className="p-3 text-[1.1rem] rounded-md ring-1 ring-gray-300 w-[100%] inset-shadow"
-                  type="password" placeholder="Re-enter Password"/>
+
+              <div className={containPassword ? "col-span-3" : "hidden"}>
+                <input
+                  className="p-3 text-[1.1rem] rounded-md ring-1 ring-gray-300 w-[100%] inset-shadow"
+                  type="password"
+                  placeholder="Re-enter Password"
+                />
               </div>
 
               {/* BIRTHDAY PABABA WRAPPER */}
@@ -290,7 +336,7 @@ const Signup = (props) => {
                ring-1 ring-gray-300 inset-shadow text-[1.1rem] rounded-md p-3"
                 >
                   <p>Male</p>
-                  <input type="radio" name='gender'></input>
+                  <input type="radio" name="gender"></input>
                 </div>
 
                 <div
@@ -298,11 +344,42 @@ const Signup = (props) => {
               ring-1 ring-gray-300 inset-shadow text-[1.1rem] rounded-md p-3"
                 >
                   <p>Female</p>
-                  <input type="radio" name='gender'></input>
+                  <input type="radio" name="gender"></input>
                 </div>
               </form>
               {/* END COL 2 */}
             </div>
+            
+            <div className="text-start mt-[1rem]">
+              <p className="text-[.8rem]">
+                People who use our service may have uploaded your contact
+                information to KikoTalk. By clicking Sign Up, you
+                agree to our Terms,<span className="font-bold underline">Privacy Policy</span> and <span className="font-bold underline">Cookies Policy</span>. You may
+                receive SMS Notifications from us and can opt out any time.
+                Charot lang to! 
+              </p>
+            </div>
+            {/* SUBMIT BUTTON */}
+            <div className="mt-[1.5rem] col-span-3">
+              <button
+                className={`z-10 transition-all hover:cursor-pointer hover:bg-hovergreen rounded-md py-3 w-[12rem]
+        m-[0_auto] text-white font-bold text-[1.1rem] ${firstName.length && lastName.length !== 0 ? 'pointer-events-auto bg-green' : 'pointer-events-none bg-green opacity-40'} `}
+              >
+                Submit
+              </button>
+            </div>
+            
+            
+            
+            
+            {/* <div className="mt-[1.5rem] col-span-3">
+              <button
+                className={`z-10 bg-green transition-all hover:cursor-pointer hover:bg-hovergreen rounded-md py-3 w-[12rem]
+        m-[0_auto] text-white font-bold text-[1.1rem] ${firstName.length && lastName.length !== 0 ? 'bl' : 'block'} `}
+              >
+                Submit
+              </button>
+            </div> */}
 
             {/* END OF SIGNUP CONTAINER ⤓ */}
           </div>
