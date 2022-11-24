@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ReactTooltip from 'react-tooltip';
+import { CgClose } from 'react-icons/cg'
 
 const Signup = (props) => {
   const [containPassword, setContainPassword] = useState(false);
@@ -9,7 +10,7 @@ const Signup = (props) => {
   const [password, setPassword] = useState(0);
   const [gender, setGender] = useState("");
 
-  console.log(gender);
+  // console.log(gender);
 
   const passwordChar = [
     {
@@ -49,7 +50,6 @@ const Signup = (props) => {
 
   return (
     <>
-    <ReactTooltip />
       {/* <div className="col-span-2 w-[] ">
         <input
           onChange={validateForSubmitButton}
@@ -82,15 +82,21 @@ const Signup = (props) => {
         <div
           className={`${
             props.openModal
-              ? "relative bg-cyan-00 top-[5rem] w-[35rem]"
+              ? "relative bg-cyan-00 top-[-27.5rem] w-[35rem]"
               : "hidden"
           }`}>
           {/* CONTAINER NG SIGNUP */}
           <div className='py-5 px-6 box-shadow bg-white rounded-lg'>
-            <div className='grid grid-cols-2 gap-2 justify-items-stretch'>
+
+            <div className={`grid grid-cols-2 gap-2 justify-items-stretch`}>
+
               <div className='flex flex-col items-start'>
                 <h1 className='text-[1.7rem] font-bold'>Sign Up</h1>
                 <p className='mt-[.2rem] text-[1.1rem]'>It's quick and easy.</p>
+              </div>
+
+              <div className={`justify-self-end self-start`}>
+                <CgClose className="cursor-pointer" onClick={() => props.setOpenModal(!props.openModal)} size={30}/>
               </div>
 
               <div className='col-start-1 col-span-2 my-2 opacity-10'>
@@ -127,15 +133,14 @@ const Signup = (props) => {
               </div>
               {/* -----------------PASSWORD------------- */}
               <div className='col-span-2 w-[] '>
-                <input  data-tip="<p> must include atleast one of the following: <br />
-                 number, special char, uppercase and lowercase characters</p>"
+                <input  data-tip="includes atlesast one of the ff: numbers, uppercase letter and ! or ?"
                   onChange={containPasswordFunc}
                   className='p-3 text-[1.1rem] rounded-md ring-1 ring-gray-300 w-[100%] inset-shadow'
                   type='password'
                   //ADD EVENT HANDLER LATER -- TYPE for string and password
                   placeholder='New Password'
                 />
-                <ReactTooltip html={true}/>
+                <ReactTooltip />
               </div>
 
               <div className={containPassword ? "col-span-3" : "hidden"}>
