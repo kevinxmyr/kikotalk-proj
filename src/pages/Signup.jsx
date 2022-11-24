@@ -6,8 +6,9 @@ const Signup = (props) => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState(0);
-  // const [gender, setGender] = useState('');
+  const [gender, setGender] = useState('');
 
+  console.log(gender);
   
   const passwordChar = [
     {
@@ -89,7 +90,7 @@ const Signup = (props) => {
             <div className="grid grid-cols-2 gap-2 justify-items-stretch">
               <div className="flex flex-col items-start">
                 <h1 className="text-[1.7rem] font-bold">Sign Up</h1>
-                <p className=" text-[1.1rem]">It's quick and easy.</p>
+                <p className="mt-[.2rem] text-[1.1rem]">It's quick and easy.</p>
               </div>
 
               <div className="col-start-1 col-span-2 my-2 opacity-10">
@@ -336,7 +337,8 @@ const Signup = (props) => {
                ring-1 ring-gray-300 inset-shadow text-[1.1rem] rounded-md p-3"
                 >
                   <p>Male</p>
-                  <input type="radio" name="gender"></input>
+                  <input onChange={() => setGender('male')}
+                  type="radio" checked={gender === 'male'} name="gender" value='male'></input>
                 </div>
 
                 <div
@@ -344,7 +346,8 @@ const Signup = (props) => {
               ring-1 ring-gray-300 inset-shadow text-[1.1rem] rounded-md p-3"
                 >
                   <p>Female</p>
-                  <input type="radio" name="gender"></input>
+                  <input onChange={() => setGender('female')}
+                  type="radio" checked={gender === 'female'} name="gender" value='female'></input>
                 </div>
               </form>
               {/* END COL 2 */}
@@ -353,10 +356,10 @@ const Signup = (props) => {
             <div className="text-start mt-[1rem]">
               <p className="text-[.8rem]">
                 People who use our service may have uploaded your contact
-                information to KikoTalk. By clicking Sign Up, you
-                agree to our Terms,<span className="font-bold underline">Privacy Policy</span> and <span className="font-bold underline">Cookies Policy</span>. You may
-                receive SMS Notifications from us and can opt out any time.
-                Charot lang to! 
+                information to KikoTalk. By clicking Sign Up/Submit, you
+                agree to our Terms, <span className="font-bold underline">Privacy Policy</span> and <span className="font-bold underline">Cookies Policy</span>. You may
+                receive SMS Notifications from us and can opt out any time. <br />
+                <i><strong> Charot lang muna to!</strong></i>
               </p>
             </div>
             {/* SUBMIT BUTTON */}
