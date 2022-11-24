@@ -7,9 +7,10 @@ import Signup from "./Signup";
 export default function Login(props) {
   const [seePassword, setSeePassword] = useState(true);
   const [mayText, setMaytext] = useState("");
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
+  const [closeModal, setCloseModal] = useState(false)
   
-  console.log(openModal)
+  console.log('log in:', openModal)
 
   const seePasswordFunc = () => {
     return setSeePassword(!seePassword);
@@ -23,11 +24,6 @@ export default function Login(props) {
     <div
       className='py-5 flex flex-col items-center
     min-h-[100vh] bg-gray'>
-
-      {/* <div className={openModal ? 'block' : 'hidden'}>
-
-      </div> */}
-
 
       <style>{`
         .box-shadow {
@@ -56,6 +52,7 @@ export default function Login(props) {
           background-color: #269d26 !important;
         }
       `}</style>
+
       {/* KIKOTALK LOGO AND PARAGRAPH */}
       <div className='2xl:grid 2xl:grid-cols-2 xl:justify-items-center flex flex-col items-center'>
         <div className='font-bold text-[3.5rem] text-[#0073AA]'>
@@ -143,8 +140,11 @@ export default function Login(props) {
         </div>
 
         {/* SIGN UP BUTTON */}
-        <div className={`mt-7`} onClick={() => setOpenModal(true)}>
-          <Signup openModal={openModal}/>
+        <div className={`mt-7`} onClick={() => {
+          setOpenModal(true)}
+        }>
+          <Signup openModal={openModal} setOpenModal={setOpenModal} 
+                  closeModal={closeModal} setCloseModal={setCloseModal}/>
         </div>
         {/* <div
           onClick={showSignupModal}

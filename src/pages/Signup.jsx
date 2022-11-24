@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import ReactTooltip from "react-tooltip";
+import ReactTooltip from 'react-tooltip';
 
 const Signup = (props) => {
+  const { openModal, setOpenModal } = props
+
   const [containPassword, setContainPassword] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -9,7 +11,8 @@ const Signup = (props) => {
   const [password, setPassword] = useState(0);
   const [gender, setGender] = useState("");
 
-  console.log(gender);
+  // console.log(gender);
+  console.log('signup:', openModal);
 
   const passwordChar = [
     {
@@ -49,6 +52,16 @@ const Signup = (props) => {
 
   return (
     <>
+    <ReactTooltip />
+      {/* <div className="col-span-2 w-[] ">
+        <input
+          onChange={validateForSubmitButton}
+          className="p-3 text-[1.1rem] rounded-md ring-1 ring-gray-300 w-[100%] inset-shadow"
+          type="password"
+          //ADD EVENT HANDLER LATER -- TYPE for string and password
+          placeholder="New Password"
+        />
+      </div> */}
       <style>{`
     .box-shadow {
       -webkit-box-shadow: 1px 3px 14px 5px rgba(0, 0, 0, 0.22);
@@ -75,17 +88,16 @@ const Signup = (props) => {
             props.openModal
               ? "relative bg-cyan-00 top-[5rem] w-[35rem]"
               : "hidden"
-          }`}
-        >
+          }`}>
           {/* CONTAINER NG SIGNUP */}
-          <div className="py-5 px-6 box-shadow bg-white rounded-lg">
-            <div className="grid grid-cols-2 gap-2 justify-items-stretch">
-              <div className="flex flex-col items-start">
-                <h1 className="text-[1.7rem] font-bold">Sign Up</h1>
-                <p className="mt-[.2rem] text-[1.1rem]">It's quick and easy.</p>
+          <div className='py-5 px-6 box-shadow bg-white rounded-lg'>
+            <div className='grid grid-cols-2 gap-2 justify-items-stretch'>
+              <div className='flex flex-col items-start'>
+                <h1 className='text-[1.7rem] font-bold'>Sign Up</h1>
+                <p className='mt-[.2rem] text-[1.1rem]'>It's quick and easy.</p>
               </div>
 
-              <div className="col-start-1 col-span-2 my-2 opacity-10">
+              <div className='col-start-1 col-span-2 my-2 opacity-10'>
                 <hr />
               </div>
 
@@ -118,16 +130,16 @@ const Signup = (props) => {
                 />
               </div>
               {/* -----------------PASSWORD------------- */}
-              <div className="col-span-2 w-[] ">
-                <input
-                  data-tip="Atleast 8 char, with numbers and special character"
+              <div className='col-span-2 w-[] '>
+                <input  data-tip="<p> must include atleast one of the following: <br />
+                 number, special char, uppercase and lowercase characters</p>"
                   onChange={containPasswordFunc}
                   className="p-3 text-[1.1rem] rounded-md ring-1 ring-gray-300 w-[100%] inset-shadow"
                   type="password"
                   //ADD EVENT HANDLER LATER -- TYPE for string and password
                   placeholder="New Password"
                 />
-                <ReactTooltip />
+                <ReactTooltip html={true}/>
               </div>
 
               <div className={containPassword ? "col-span-3" : "hidden"}>
