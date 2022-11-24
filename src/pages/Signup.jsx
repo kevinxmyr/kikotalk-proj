@@ -3,6 +3,8 @@ import ReactTooltip from 'react-tooltip';
 import { CgClose } from 'react-icons/cg'
 
 const Signup = (props) => {
+  const { openModal, setOpenModal } = props
+
   const [containPassword, setContainPassword] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -11,6 +13,7 @@ const Signup = (props) => {
   const [gender, setGender] = useState("");
 
   // console.log(gender);
+  console.log('signup:', openModal);
 
   const passwordChar = [
     {
@@ -81,9 +84,9 @@ const Signup = (props) => {
 
         <div
           className={`${
-            props.openModal
+            openModal
               ? "relative bg-cyan-00 top-[-27.5rem] w-[35rem]"
-              : "hidden"
+              : 'hidden'
           }`}>
           {/* CONTAINER NG SIGNUP */}
           <div className='py-5 px-6 box-shadow bg-white rounded-lg'>
@@ -95,8 +98,10 @@ const Signup = (props) => {
                 <p className='mt-[.2rem] text-[1.1rem]'>It's quick and easy.</p>
               </div>
 
-              <div className={`justify-self-end self-start`}>
-                <CgClose className="cursor-pointer" onClick={() => props.setOpenModal(!props.openModal)} size={30}/>
+              <div className={`justify-self-end self-start`} onClick={() => {
+                  return setOpenModal(false)}
+                }>
+                <CgClose size={30} className="cursor-pointer"/>
               </div>
 
               <div className='col-start-1 col-span-2 my-2 opacity-10'>

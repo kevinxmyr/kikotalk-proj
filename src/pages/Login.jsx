@@ -8,8 +8,9 @@ export default function Login(props) {
   const [seePassword, setSeePassword] = useState(true);
   const [mayText, setMaytext] = useState("");
   const [openModal, setOpenModal] = useState(false);
+  const [closeModal, setCloseModal] = useState(false)
   
-  console.log('log in component', openModal)
+  console.log('log in:', openModal)
 
   const seePasswordFunc = () => {
     return setSeePassword(!seePassword);
@@ -51,6 +52,7 @@ export default function Login(props) {
           background-color: #269d26 !important;
         }
       `}</style>
+
       {/* KIKOTALK LOGO AND PARAGRAPH */}
       <div className='2xl:grid 2xl:grid-cols-2 xl:justify-items-center flex flex-col items-center'>
         <div className='font-bold text-[3.5rem] text-[#0073AA]'>
@@ -138,8 +140,11 @@ export default function Login(props) {
         </div>
 
         {/* SIGN UP BUTTON */}
-        <div className={`mt-7`} onClick={() => setOpenModal(!openModal)}>
-          <Signup openModal={openModal} setOpenModal={setOpenModal}/>
+        <div className={`mt-7`} onClick={() => {
+          setOpenModal(true)}
+        }>
+          <Signup openModal={openModal} setOpenModal={setOpenModal} 
+                  closeModal={closeModal} setCloseModal={setCloseModal}/>
         </div>
         {/* <div
           onClick={showSignupModal}
