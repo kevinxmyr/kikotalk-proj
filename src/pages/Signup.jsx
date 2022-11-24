@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ReactTooltip from 'react-tooltip';
+import { CgClose } from 'react-icons/cg'
 
 const Signup = (props) => {
   const { openModal, setOpenModal } = props
@@ -53,15 +54,7 @@ const Signup = (props) => {
   return (
     <>
     <ReactTooltip />
-      {/* <div className="col-span-2 w-[] ">
-        <input
-          onChange={validateForSubmitButton}
-          className="p-3 text-[1.1rem] rounded-md ring-1 ring-gray-300 w-[100%] inset-shadow"
-          type="password"
-          //ADD EVENT HANDLER LATER -- TYPE for string and password
-          placeholder="New Password"
-        />
-      </div> */}
+
       <style>{`
     .box-shadow {
       -webkit-box-shadow: 1px 3px 14px 5px rgba(0, 0, 0, 0.22);
@@ -95,6 +88,10 @@ const Signup = (props) => {
               <div className='flex flex-col items-start'>
                 <h1 className='text-[1.7rem] font-bold'>Sign Up</h1>
                 <p className='mt-[.2rem] text-[1.1rem]'>It's quick and easy.</p>
+              </div>
+              
+              <div className="cursor-pointer justify-self-end self-start">
+                <CgClose size={30}/>
               </div>
 
               <div className='col-start-1 col-span-2 my-2 opacity-10'>
