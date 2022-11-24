@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactTooltip from 'react-tooltip';
 import { CgClose } from 'react-icons/cg'
-
+// FROM MACBOOK UPDATE
 const Signup = (props) => {
   const { openModal, setOpenModal } = props
 
