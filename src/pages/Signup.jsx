@@ -77,11 +77,7 @@ const Signup = (props) => {
         </div>
 
         <div
-          className={`${
-            props.openModal
-              ? "relative bg-cyan-00 top-[5rem] w-[35rem]"
-              : "hidden"
-          }`}>
+          className={`${props.openModal}`}>
           {/* CONTAINER NG SIGNUP */}
           <div className='py-5 px-6 box-shadow bg-white rounded-lg'>
             <div className='grid grid-cols-2 gap-2 justify-items-stretch'>
@@ -90,8 +86,11 @@ const Signup = (props) => {
                 <p className='mt-[.2rem] text-[1.1rem]'>It's quick and easy.</p>
               </div>
               
-              <div className="cursor-pointer justify-self-end self-start">
+              <div onClick={() => props.openModal2} className="cursor-pointer justify-self-end self-start">
                 <CgClose size={30}/>
+                {
+                  console.log('from cgclose', props.openModal2)
+                }
               </div>
 
               <div className='col-start-1 col-span-2 my-2 opacity-10'>
@@ -128,15 +127,14 @@ const Signup = (props) => {
               </div>
               {/* -----------------PASSWORD------------- */}
               <div className='col-span-2 w-[] '>
-                <input  data-tip="<p> must include atleast one of the following: <br />
-                 number, special char, uppercase and lowercase characters</p>"
+                <input  data-tip="must contain uppercase letters, numbers and ? and/or !"
                   onChange={containPasswordFunc}
                   className="p-3 text-[1.1rem] rounded-md ring-1 ring-gray-300 w-[100%] inset-shadow"
                   type="password"
                   //ADD EVENT HANDLER LATER -- TYPE for string and password
                   placeholder="New Password"
                 />
-                <ReactTooltip html={true}/>
+                <ReactTooltip />
               </div>
 
               <div className={containPassword ? "col-span-3" : "hidden"}>

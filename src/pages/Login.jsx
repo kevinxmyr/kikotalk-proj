@@ -7,8 +7,7 @@ import Signup from "./Signup";
 export default function Login(props) {
   const [seePassword, setSeePassword] = useState(true);
   const [mayText, setMaytext] = useState("");
-  const [openModal, setOpenModal] = useState(false);
-  const [closeModal, setCloseModal] = useState(false)
+  const [openModal, setOpenModal] = useState(`hidden`);
   
   console.log('log in:', openModal)
 
@@ -19,11 +18,19 @@ export default function Login(props) {
   const typeFunc = (e) => {
     return setMaytext(e.target.value);
   };
+  
+  const openModalFunc = () => {
+    return setOpenModal(`relative bg-cyan-00 top-[-27rem] w-[35rem]`)
+  }
+  
+  const openModal2 = () => {
+    return (
+    setOpenModal(`hidden`)
+    );
+  }
 
   return (
-    <div
-      className='py-5 flex flex-col items-center
-    min-h-[100vh] bg-gray'>
+    <div className={`py-5 flex flex-col items-center min-h-[100vh] bg-gray`} >
 
       <style>{`
         .box-shadow {
@@ -54,7 +61,7 @@ export default function Login(props) {
       `}</style>
 
       {/* KIKOTALK LOGO AND PARAGRAPH */}
-      <div className='2xl:grid 2xl:grid-cols-2 xl:justify-items-center flex flex-col items-center'>
+      <div onClick={openModal2} className='2xl:grid 2xl:grid-cols-2 xl:justify-items-center flex flex-col items-center'>
         <div className='font-bold text-[3.5rem] text-[#0073AA]'>
           <p className='font-alex'>KikoTalk</p>
         </div>
@@ -139,12 +146,9 @@ export default function Login(props) {
           <hr className='opacity' />
         </div>
 
-        {/* SIGN UP BUTTON */}
-        <div className={`mt-7`} onClick={() => {
-          setOpenModal(true)}
-        }>
-          <Signup openModal={openModal} setOpenModal={setOpenModal} 
-                  closeModal={closeModal} setCloseModal={setCloseModal}/>
+        {/* SIGN UP BUTTON */}        
+        <div onClick={openModalFunc} className={`mt-7`}>
+          <Signup openModal={openModal} setOpenModal={setOpenModal} openModal2={openModal2} />
         </div>
         {/* <div
           onClick={showSignupModal}
