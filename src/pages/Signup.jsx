@@ -12,8 +12,7 @@ const Signup = (props) => {
   const [password, setPassword] = useState(0);
   const [gender, setGender] = useState("");
 
-  // console.log(gender);
-  console.log('signup:', openModal);
+  console.log(openModal)
 
   const passwordChar = [
     {
@@ -47,14 +46,12 @@ const Signup = (props) => {
   const validateForSubmitButton = (event) => {
     const input = event.target.value;
     for (let x of passwordChar) {
-      console.log(input.match(x.chars));
+      // console.log(input.match(x.chars));
     }
   };
 
   return (
     <>
-    <ReactTooltip />
-
       <style>{`
     .box-shadow {
       -webkit-box-shadow: 1px 3px 14px 5px rgba(0, 0, 0, 0.22);
@@ -77,7 +74,8 @@ const Signup = (props) => {
         </div>
 
         <div
-          className={`${props.openModal}`}>
+          className={`${props.openModal ? 'relative bg-cyan-00 top-[-29rem] w-[35rem]' : 'hidden' }`}>
+          
           {/* CONTAINER NG SIGNUP */}
           <div className='py-5 px-6 box-shadow bg-white rounded-lg'>
             <div className='grid grid-cols-2 gap-2 justify-items-stretch'>
@@ -86,12 +84,10 @@ const Signup = (props) => {
                 <p className='mt-[.2rem] text-[1.1rem]'>It's quick and easy.</p>
               </div>
               
-              <div onClick={() => props.openModal2} className="cursor-pointer justify-self-end self-start">
+              {/* <div className="cursor-pointer justify-self-end self-start">
                 <CgClose size={30}/>
-                {
-                  console.log('from cgclose', props.openModal2)
-                }
-              </div>
+                
+              </div> */}
 
               <div className='col-start-1 col-span-2 my-2 opacity-10'>
                 <hr />
@@ -337,13 +333,14 @@ const Signup = (props) => {
                   className="bordergender col-start-1 col-span-[1.5] flex justify-between
                ring-1 ring-gray-300 inset-shadow text-[1.1rem] rounded-md p-3"
                 >
-                  <p>Male</p>
+                  <label htmlFor="male">Male</label>
                   <input
                     onChange={() => setGender("male")}
                     type="radio"
                     checked={gender === "male"}
                     name="gender"
                     value="male"
+                    id="male"
                   ></input>
                 </div>
 
@@ -351,13 +348,14 @@ const Signup = (props) => {
                   className="bordergender col-start-2 flex justify-between
               ring-1 ring-gray-300 inset-shadow text-[1.1rem] rounded-md p-3"
                 >
-                  <p>Female</p>
+                  <label htmlFor="female">Female</label>
                   <input
                     onChange={() => setGender("female")}
                     type="radio"
                     checked={gender === "female"}
                     name="gender"
                     value="female"
+                    id="female"
                   ></input>
                 </div>
               </form>

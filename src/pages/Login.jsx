@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { CgClose } from "react-icons/cg";
 import Signup from "./Signup";
 
 //PC new branch - branchfromPC
@@ -7,9 +8,8 @@ import Signup from "./Signup";
 export default function Login(props) {
   const [seePassword, setSeePassword] = useState(true);
   const [mayText, setMaytext] = useState("");
-  const [openModal, setOpenModal] = useState(`hidden`);
+  const [openModal, setOpenModal] = useState(false);
   
-  console.log('log in:', openModal)
 
   const seePasswordFunc = () => {
     return setSeePassword(!seePassword);
@@ -19,14 +19,9 @@ export default function Login(props) {
     return setMaytext(e.target.value);
   };
   
-  const openModalFunc = () => {
-    return setOpenModal(`relative bg-cyan-00 top-[-27rem] w-[35rem]`)
-  }
   
   const openModal2 = () => {
-    return (
-    setOpenModal(`hidden`)
-    );
+   return setOpenModal(false)
   }
 
   return (
@@ -61,9 +56,12 @@ export default function Login(props) {
       `}</style>
 
       {/* KIKOTALK LOGO AND PARAGRAPH */}
-      <div onClick={openModal2} className='2xl:grid 2xl:grid-cols-2 xl:justify-items-center flex flex-col items-center'>
+      <div onClick={openModal2} className='flex flex-col items-center'>
         <div className='font-bold text-[3.5rem] text-[#0073AA]'>
           <p className='font-alex'>KikoTalk</p>
+        </div>
+        <div className={openModal ? 'relative top-[1.9rem] right-[-14.5rem] z-10 opacity-70 cursor-pointer' : 'hidden'}>
+          <CgClose size={30}/>
         </div>
         <div className='text-center max-w-[65%] bg-red'>
           <p className='text-[1.4rem]'>
@@ -147,7 +145,7 @@ export default function Login(props) {
         </div>
 
         {/* SIGN UP BUTTON */}        
-        <div onClick={openModalFunc} className={`mt-7`}>
+        <div onClick={() => setOpenModal(true)} className={`mt-7`}>
           <Signup openModal={openModal} setOpenModal={setOpenModal} openModal2={openModal2} />
         </div>
         {/* <div
