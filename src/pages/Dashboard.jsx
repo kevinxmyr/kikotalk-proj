@@ -8,6 +8,7 @@ import { BsPaperclip, BsCardImage } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import ariana from "../images/ariana.png";
 import { contacts } from "../data/contacts";
+import Messages from "./Messages";
 
 const Dashboard = () => {
   return (
@@ -36,7 +37,10 @@ const Dashboard = () => {
           </div>
           {contacts.map((contact) => {
             return (
-              <div className="flex items-center p-3 hover:bg-dark">
+              <div
+                key={contact.name}
+                className="flex items-center p-3 hover:bg-dark"
+              >
                 <div className="w-[5rem] h-[5rem] mr-[1rem]">
                   <img
                     className="w-[5rem] h-[5rem] object-cover rounded-[50%]"
@@ -51,11 +55,12 @@ const Dashboard = () => {
               </div>
             );
           })}
-
         </div>
-
         {/* --------------------------RIGHT PANE--------------------------------- */}
         <div className="flex-[2]">
+          <Messages />
+        </div>
+        {/* <div className="flex-[2]">
           <div className="flex justify-between bg-dark h-[4rem]">
             <div
               className="flex items-center ml-[1.5rem] font-bold text-[1.15rem]
@@ -84,7 +89,7 @@ const Dashboard = () => {
             ></textarea>
             <BsCardImage size={25} />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

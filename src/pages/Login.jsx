@@ -74,7 +74,7 @@ export default function Login(props) {
       </div>
 
       {/* ----------- CONTAINER OF INPUTS ----------- */}
-      <div
+      <form
         className="
         mt-[2rem] 
         bg-white 
@@ -90,7 +90,8 @@ export default function Login(props) {
       >
         {/* EMAIL PHONE NUMBER */}
         <div className="bg-slate-00 w-[100%]">
-          <input
+          <input 
+            autofocus 
             className="p-3 text-[1.1rem] w-[90%] rounded-md ring-1 ring-gray-300 inset-shadow"
             type="email"
             placeholder="E-mail or phone number"
@@ -167,7 +168,7 @@ export default function Login(props) {
         </div> */}
 
         {/* END OF CONTAINER */}
-      </div>
+      </form>
 
       {/* Terms and condition */}
       <div className="mt-[1.4rem]">
