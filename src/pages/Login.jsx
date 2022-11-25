@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { CgClose } from "react-icons/cg";
 import Signup from "./Signup";
-
+import { Link } from 'react-router-dom'
 //PC new branch - branchfromPC
 
 export default function Login(props) {
   const [seePassword, setSeePassword] = useState(true);
   const [mayText, setMaytext] = useState("");
   const [openModal, setOpenModal] = useState(false);
-  
 
   const seePasswordFunc = () => {
     return setSeePassword(!seePassword);
@@ -18,15 +17,13 @@ export default function Login(props) {
   const typeFunc = (e) => {
     return setMaytext(e.target.value);
   };
-  
-  
+
   const openModal2 = () => {
-   return setOpenModal(false)
-  }
+    return setOpenModal(false);
+  };
 
   return (
-    <div className={`py-5 flex flex-col items-center min-h-[100vh] bg-gray`} >
-
+    <div className={`py-5 flex flex-col items-center min-h-[100vh] bg-gray`}>
       <style>{`
         .box-shadow {
           -webkit-box-shadow: 1px 3px 14px 5px rgba(0, 0, 0, 0.22);
@@ -56,15 +53,21 @@ export default function Login(props) {
       `}</style>
 
       {/* KIKOTALK LOGO AND PARAGRAPH */}
-      <div onClick={openModal2} className='flex flex-col items-center'>
-        <div className='font-bold text-[3.5rem] text-[#0073AA]'>
-          <p className='font-alex'>KikoTalk</p>
+      <div onClick={openModal2} className="flex flex-col items-center">
+        <div className="font-bold text-[3.5rem] text-[#0073AA]">
+          <p className="font-alex">KikoTalk</p>
         </div>
-        <div className={openModal ? 'relative top-[1.9rem] right-[-14.5rem] z-10 opacity-70 cursor-pointer' : 'hidden'}>
-          <CgClose size={30}/>
+        <div
+          className={
+            openModal
+              ? "relative top-[1.9rem] right-[-14.5rem] z-10 opacity-70 cursor-pointer"
+              : "hidden"
+          }
+        >
+          <CgClose size={30} />
         </div>
-        <div className='text-center max-w-[65%] bg-red'>
-          <p className='text-[1.4rem]'>
+        <div className="text-center max-w-[65%] bg-red">
+          <p className="text-[1.4rem]">
             Talk with friends and the world around you on KikoTalk.
           </p>
         </div>
@@ -72,7 +75,7 @@ export default function Login(props) {
 
       {/* ----------- CONTAINER OF INPUTS ----------- */}
       <div
-        className='
+        className="
         mt-[2rem] 
         bg-white 
         pt-5 
@@ -83,30 +86,32 @@ export default function Login(props) {
          flex 
          flex-col 
          items-center 
-         text-center'>
+         text-center"
+      >
         {/* EMAIL PHONE NUMBER */}
-        <div className='bg-slate-00 w-[100%]'>
+        <div className="bg-slate-00 w-[100%]">
           <input
-            className='p-3 text-[1.1rem] w-[90%] rounded-md ring-1 ring-gray-300 inset-shadow'
-            type='email'
-            placeholder='E-mail or phone number'
+            className="p-3 text-[1.1rem] w-[90%] rounded-md ring-1 ring-gray-300 inset-shadow"
+            type="email"
+            placeholder="E-mail or phone number"
             required
           />
         </div>
         {/* PASSWORD */}
-        <div className='mt-[1rem] w-[100%] relative'>
+        <div className="mt-[1rem] w-[100%] relative">
           <input
             onChange={typeFunc}
-            className='p-3 text-[1.1rem] rounded-md ring-1 ring-gray-300 w-[90%] inset-shadow'
+            className="p-3 text-[1.1rem] rounded-md ring-1 ring-gray-300 w-[90%] inset-shadow"
             type={seePassword ? "password" : "text"}
-            placeholder='Password'
+            placeholder="Password"
             required
           />
           {mayText.length ? (
             <span
               onClick={seePasswordFunc}
-              className='absolute top-[14px] opacity-[.5] right-10
-              hover:cursor-pointer hover:bg-slate-300 hover:rounded-full'>
+              className="absolute top-[14px] opacity-[.5] right-10
+              hover:cursor-pointer hover:bg-slate-300 hover:rounded-full"
+            >
               {seePassword ? (
                 <AiOutlineEye size={20} />
               ) : (
@@ -118,7 +123,7 @@ export default function Login(props) {
 
         {/* LOG IN BUTTON */}
         <button
-          className='mt-[1rem] 
+          className="mt-[1rem] 
          bg-[#0073AA] 
          text-white 
          w-[90%] 
@@ -128,25 +133,30 @@ export default function Login(props) {
          font-bold 
          text-[1.1rem]
          hover:bg-hoverblue
-         transition-all'>
-          <div className=''>Log In</div>
+         transition-all"
+        >
+          <div className="">Log In</div>
         </button>
 
         {/* FORGOT PASSWORD */}
-        <div className='mt-[1.1rem]'>
-          <a className='text-cyan-700 text-[.94rem]' href='#'>
+        <div className="mt-[1.1rem]">
+          <a className="text-cyan-700 text-[.94rem]" href="#">
             Forgot password?
           </a>
         </div>
 
         {/* HORIZONTAL LINE */}
-        <div className='w-[90%] mx-[auto] mt-4 opacity'>
-          <hr className='opacity' />
+        <div className="w-[90%] mx-[auto] mt-4 opacity">
+          <hr className="opacity" />
         </div>
 
-        {/* SIGN UP BUTTON */}        
+        {/* SIGN UP BUTTON */}
         <div onClick={() => setOpenModal(true)} className={`mt-7`}>
-          <Signup openModal={openModal} setOpenModal={setOpenModal} openModal2={openModal2} />
+          <Signup
+            openModal={openModal}
+            setOpenModal={setOpenModal}
+            openModal2={openModal2}
+          />
         </div>
         {/* <div
           onClick={showSignupModal}
@@ -155,21 +165,25 @@ export default function Login(props) {
             
           <button className='font-bold text-white'>Create new account</button>
         </div> */}
-        
+
         {/* END OF CONTAINER */}
       </div>
 
       {/* Terms and condition */}
-      <div className='mt-[1.4rem]'>
+      <div className="mt-[1.4rem]">
         <p>
           Click{" "}
-          <a className='hover:text-cyan-500 hover:underline font-bold' href='#'>
+          <a className="hover:text-cyan-500 hover:underline font-bold" href="#">
             here
           </a>{" "}
           to read Terms & Conditions
         </p>
       </div>
-
+      <Link to='/dashboard'>
+        <div>
+          <button>go to dashboard</button>
+        </div>
+      </Link>
     </div>
   );
 }

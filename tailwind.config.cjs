@@ -16,7 +16,14 @@ module.exports = {
       'blue': '#0073AA',
       'hoverblue': '#016594',
       'green': '#42B72A',
-      'hovergreen': '#3ca827'
+      'hovergreen': '#3ca827',
+      
+      'lightest': '#DEF5E5',
+      'lighter': '#BCEAD5',
+      'light': '#9ED5C5',
+      'dark': '#8EC3B0',
+      'darker': '#6a9183',
+      'darkest': '#3c524a'
     }
     },
   },
