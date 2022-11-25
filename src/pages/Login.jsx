@@ -91,7 +91,7 @@ export default function Login(props) {
         {/* EMAIL PHONE NUMBER */}
         <div className="bg-slate-00 w-[100%]">
           <input 
-            autofocus 
+            autoFocus 
             className="p-3 text-[1.1rem] w-[90%] rounded-md ring-1 ring-gray-300 inset-shadow"
             type="email"
             placeholder="E-mail or phone number"

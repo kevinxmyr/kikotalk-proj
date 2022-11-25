@@ -13,8 +13,10 @@ import Messages from "./Messages";
 const Dashboard = () => {
   return (
     <div className="flex items-center justify-center bg-slate-200 w-[100vw] h-[100vh] font-poppins">
+      {/* ----------------------- WRAPPER --------------------------- */}
       <div className="overflow-hidden flex bg-lightest w-[90%] h-[90%] rounded-lg">
         <div className="header bg-lighter flex-[1] ">
+          {/* ------------------- HEADER ----------------- */}
           <div
             className="bg-light text-white flex p-2 justify-between
           h-[4rem]"
@@ -24,7 +26,7 @@ const Dashboard = () => {
               src={logo}
               alt="logo"
             />
-            <p className="self-center font-bold text-[1.2rem]">Selena</p>
+            <p className="self-center font-bold text-[1.2rem] text-black">Selena</p>
             <Link className="self-center" to="/">
               <div
                 className="cursor-pointer flex items-center justify-between bg-dark hover:bg-darker 
@@ -35,18 +37,20 @@ const Dashboard = () => {
               </div>
             </Link>
           </div>
+          {/* ------------------- CONTACT LIST -------------- */}
+          <div className="overflow-scroll h-[100vh]">
           {contacts.map((contact) => {
             return (
               <div
-                key={contact.name}
-                className="flex items-center p-3 hover:bg-dark"
+              key={contact.name}
+              className="flex items-center p-3 hover:bg-dark"
               >
                 <div className="w-[5rem] h-[5rem] mr-[1rem]">
                   <img
                     className="w-[5rem] h-[5rem] object-cover rounded-[50%]"
                     src={contact.image}
                     alt="araiana"
-                  />
+                    />
                 </div>
                 <div>
                   <p className="text-[1.2rem]">{contact.name}</p>
@@ -55,6 +59,7 @@ const Dashboard = () => {
               </div>
             );
           })}
+          </div>
         </div>
         {/* --------------------------RIGHT PANE--------------------------------- */}
         <div className="flex-[2]">
