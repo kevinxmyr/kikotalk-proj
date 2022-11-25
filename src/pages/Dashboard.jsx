@@ -5,6 +5,9 @@ import { BsCameraVideo } from "react-icons/bs";
 import { BsTelephone } from "react-icons/bs";
 import { SlOptionsVertical } from "react-icons/sl";
 import { BsPaperclip, BsCardImage } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import ariana from "../images/ariana.png";
+import { contacts } from "../data/contacts";
 
 const Dashboard = () => {
   return (
@@ -21,19 +24,39 @@ const Dashboard = () => {
               alt="logo"
             />
             <p className="self-center font-bold text-[1.2rem]">Selena</p>
-            <div
-              className="cursor-pointer flex items-center justify-between bg-dark hover:bg-darker 
-            rounded-md px-3 text-white h-10 self-center mr-1"
-            >
-              <CiLogout className="self-center mr-2" />
-              <p>Log out</p>
-            </div>
+            <Link className="self-center" to="/">
+              <div
+                className="cursor-pointer flex items-center justify-between bg-dark hover:bg-darker 
+            rounded-md px-3 hover:text-white text-black h-10 self-center mr-1"
+              >
+                <CiLogout className="self-center mr-2" />
+                <p>Log out</p>
+              </div>
+            </Link>
           </div>
+          {contacts.map((contact) => {
+            return (
+              <div className="flex items-center p-3 hover:bg-dark">
+                <div className="w-[5rem] h-[5rem] mr-[1rem]">
+                  <img
+                    className="w-[5rem] h-[5rem] object-cover rounded-[50%]"
+                    src={contact.image}
+                    alt="araiana"
+                  />
+                </div>
+                <div>
+                  <p className="text-[1.2rem]">{contact.name}</p>
+                  <p>{contact.message}</p>
+                </div>
+              </div>
+            );
+          })}
 
-          <div className="">chats</div>
         </div>
+
+        {/* --------------------------RIGHT PANE--------------------------------- */}
         <div className="flex-[2]">
-          <div className="flex justify-between bg-dark h-[7.8vh]">
+          <div className="flex justify-between bg-dark h-[4rem]">
             <div
               className="flex items-center ml-[1.5rem] font-bold text-[1.15rem]
             text-white"
@@ -47,26 +70,19 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="h-[80%] overflow-y-scroll">MESSAGE HERE</div>
+          <div className="h-[90%] overflow-y-scroll">MESSAGE HERE</div>
 
-          <div className="flex  bg-white">
-            <input
-              className="h-[11.1%]
-            w-[80%] text-[1.1rem]"
-              type="text"
-              placeholder="Type something..."
-            />
-            <div className="flex justify-center items-center">
-              <div>
-                <BsCardImage size={25} />
-              </div>
-              <div>
-                <BsPaperclip className="" size={25} />
-              </div>
-            </div>
-            <div className="bg-darker">
-              <button>SEND</button>
-            </div>
+          <div className="flex bg-gray h-[3rem] self-end items-center">
+            <BsPaperclip className="" size={25} />
+            <textarea
+              className="resize-none overflow-hidden"
+              name=""
+              id=""
+              cols="30"
+              rows="1"
+              placeholder="Write a message..."
+            ></textarea>
+            <BsCardImage size={25} />
           </div>
         </div>
       </div>
